@@ -2,7 +2,7 @@ var excelClient = require('./excel-client.js');
 var luisClient = require('./luis-client.js');
 var mongoClient = require('./mongo-client.js')
 var XLSX = require('xlsx');
-var workbook = XLSX.readFile('RepairText.xlsx');
+var workbook = XLSX.readFile(/*Excel Sheet*/);
 
 var textMiner = function Constructor(settings) {
 }
@@ -34,25 +34,14 @@ textMiner.prototype._setupLuis = function (data) {
     data: data
   });
   this.luisClient._promiseForLuisEntity();
-  // this.luisClient._promiseForLuisEntity().then(function (data) {
-  //   console.log(data);
-  //   this._setupMongo(data);
-  // }.bind(this)).fail(function (error) {
-  //   console.log(error)
-  // }).done();
 };
 
 textMiner.prototype._setupMongo = function (data) {
   this.mongoClient = new mongoClient ({
-    url: "mongodb://themrolab:password@ds044679.mlab.com:44679/repair_info",
+    //url: MONGODB LINK,
     data: data
   });
   this.mongoClient._storeData()
-  // .then(function () {
-  //   //console.log(data);
-  // }.bind(this)).fail(function (error) {
-  //   console.log(error)
-  // }).done();
 };
 
 module.exports = textMiner;

@@ -1,6 +1,3 @@
-// var XLSX = require('xlsx');
-// var workbook = XLSX.readFile('RepairText.xlsx');
-// var sheet_name_list = workbook1.SheetNames;
 var vow = require('vow');
 var workbook;
 var sheet_name_list;
